@@ -1,0 +1,72 @@
+https://www.douban.com/group/kaopulove/
+chrome请求
+
+:host:www.douban.com
+:method:GET
+:path:/group/kaopulove/
+:scheme:https
+:version:HTTP/1.1
+accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+accept-encoding:gzip, deflate, sdch
+accept-language:zh-CN,zh;q=0.8
+cache-control:no-cache
+pragma:no-cache
+upgrade-insecure-requests:1
+user-agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36
+
+豆瓣响应
+
+cache-control:must-revalidate, no-cache, private
+content-encoding:gzip
+content-type:text/html; charset=utf-8
+date:Fri, 01 Apr 2016 04:21:17 GMT
+expires:Sun, 1 Jan 2006 01:00:00 GMT
+p3p:CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
+pragma:no-cache
+server:nginx
+set-cookie:bid="bKKgu5c+QMQ"; path=/; domain=.douban.com; expires=Sat, 01-Apr-2017 04:21:17 GMT
+status:200 OK
+strict-transport-security:max-age=15552000;
+vary:Accept-Encoding
+version:HTTP/1.1
+x-dae-app:group
+x-dae-node:sindar18d
+x-douban-mobileapp:0
+x-douban-newbid:bKKgu5c+QMQ
+
+豆瓣使用了spdy3.1协议
+未深入了解
+
+https://www.douban.com/group/topic/84347336/
+chrome再次请求
+
+:host:www.douban.com
+:method:GET
+:path:/group/topic/84347336/
+:scheme:https
+:version:HTTP/1.1
+accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+accept-encoding:gzip, deflate, sdch
+accept-language:zh-CN,zh;q=0.8
+cache-control:no-cache
+cookie:bid="Mdq0oq087JY"; _pk_id.100001.8cb4=4fba7af1a9b22788.1459483190.1.1459483190.1459483190.; _pk_ses.100001.8cb4=*; __utmt=1; __utma=30149280.235877454.1459483192.1459483192.1459483192.1; __utmb=30149280.1.10.1459483192; __utmc=30149280; __utmz=30149280.1459483192.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)
+pragma:no-cache
+upgrade-insecure-requests:1
+user-agent:Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/49.0.2623.110 Safari/537.36
+
+豆瓣再次响应
+
+cache-control:must-revalidate, no-cache, private
+content-encoding:gzip
+content-type:text/html; charset=utf-8
+date:Fri, 01 Apr 2016 04:08:40 GMT
+expires:Sun, 1 Jan 2006 01:00:00 GMT
+pragma:no-cache
+server:nginx
+status:200 OK
+strict-transport-security:max-age=15552000;
+vary:Accept-Encoding
+version:HTTP/1.1
+x-dae-app:group
+x-dae-node:sindar26d
+x-douban-mobileapp:0

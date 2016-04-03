@@ -1,0 +1,23 @@
+{
+  "name": "walker",
+  "version": "1.0.0",
+  "description": "crawler for douban",
+  "main": "./src/walk.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "cookie": "^0.2.3",
+    "iconv-lite": "^0.4.13"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "node go.js"
+  },
+  "keywords": [
+    "crawler",
+    "walker"
+  ],
+  "author": "markT",
+  "license": "MIT"
+}
