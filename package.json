@@ -1,6 +1,6 @@
 {
   "name": "walker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "crawler for douban",
   "main": "./src/walk.js",
   "directories": {

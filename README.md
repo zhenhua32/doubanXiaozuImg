@@ -61,9 +61,6 @@ http://linuxtools-rst.readthedocs.org/zh_CN/latest/tool/ps.html
 所有的都是写给未来的自己看的
 
 ---
-初始版, 可能会有很多问题
-
-version 1.0.0
 
 把程序扔给github就不用担心丢失了
 
@@ -71,9 +68,16 @@ version 1.0.0
 豆瓣限制同一IP频繁访问, 所以速度很慢,
 大概是一分钟10-20次https
 
+**运行实测是一小时1200次https**
+
 豆瓣全站启用了https, 用的是spdy3.1协议
 
 至于分布式, 不了解
 
 最简单的分布式就是发动群众, 可能也是最难的,
 比起机器而言
+
+##更新
+version 1.0.1
+* 修复parser.parse可能造成的内存泄漏
+* parser.parse现在返回promise
