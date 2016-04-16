@@ -49,6 +49,8 @@ nohup node go.js &
 windows下用exit退出putty, 不要直接点叉叉关闭,
 不然进程不会在后台继续运行
 
+默认日志保存在nohup.out中, 使用 nohup node go.js > out & 修改为保存在当前目录的out文件中
+
 查看进程
 ps -A
 
@@ -56,6 +58,29 @@ ps -A
 top
 
 http://linuxtools-rst.readthedocs.org/zh_CN/latest/tool/ps.html
+
+压缩
+zip -r new.zip ./new
+
+http://www.kryptosx.info/archives/366.html
+
+当前文件夹大小
+du -h ./
+
+当前文件大小
+ls -lh ./
+
+统计文件数目
+ls -l |grep "^-"|wc -l
+
+http://blog.sina.com.cn/s/blog_464f6dba01012vwv.html
+
+查看文件
+* vi 修改
+* cat 显示所有内容
+* more 分页查看
+* tail 查看尾部
+* head 查看头部
 
 ---
 所有的都是写给未来的自己看的
