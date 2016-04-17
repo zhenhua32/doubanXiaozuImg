@@ -5,6 +5,15 @@ const path = require('path');
 
 var parser = {};
 
+/**
+ * 从文件夹中解析并获得links, 同时把链接保存在文件中
+ * 
+ * @param {string} dir - The directory of html files
+ * @param {RegExp} reg - Use for parse links
+ * @param {string} savedir - The directory to save the links file
+ * 
+ * @return {Promise} - the promise return links
+ */
 parser.parse = function(dir, reg, savedir) {
     let files = fs.readdirSync(dir);
 
@@ -31,12 +40,12 @@ parser.parse = function(dir, reg, savedir) {
             //同步写入会有重复, stream是更好的选择
         }
 
-        stream.end();
-
         //事件触发了才返回是不可行的, 换用promise
         stream.on('finish', () => {
             resolve(fs.readFileSync(filepath, 'utf8').split('\n'));
-        })
+        });
+        
+        stream.end();
     }
 
     return new Promise(step);

@@ -90,7 +90,7 @@ walk.downhtml = function(request, dir) {
             response.resume();
         }
     });
-
+    //这个 return 没什么用
     request.on('close', () => {
         return true;
     });
