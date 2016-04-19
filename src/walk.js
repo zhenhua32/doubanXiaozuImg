@@ -38,7 +38,15 @@ function merge(obj1, obj2) {
     return obj3;
 }
 
-walk.request = function(urlString, headers) {
+/**
+ * 定制 http(s) 请求, 合并 http 和 https
+ * 
+ * @param {string} urlString - The url of the http(s) request
+ * @param {Array<string>} headers - The headers of the http(s) request
+ * 
+ * @retruns {http.ClientRequest|https.ClientRequest}
+ */
+walk.request = function (urlString, headers) {
     if (typeof urlString !== 'string') {
         console.log('walk.request的第一个参数不是string')
         return 1;
@@ -61,12 +69,11 @@ walk.request = function(urlString, headers) {
     } else if (op.protocol === 'https:') {
         //必须重新设置
         options.port = 443;
-
         return https.request(options);
     }
 }
 
-walk.downhtml = function(request, dir) {
+walk.downhtml = function (request, dir) {
     let filepath = path.join(dir, Date.now() + '.html');
     let header = null;
 
@@ -98,7 +105,55 @@ walk.downhtml = function(request, dir) {
     request.end();
 }
 
-walk.downimg = function(request, dir) {
+/**
+ * 发起 http(s) 请求
+ * 
+ * @param {http.ClientRequest|https.ClientRequest} request - http(s) request
+ * @param {string} dir - The directory to save html
+ * 
+ * @retruns {Promise} - the promise return 'good'
+ */
+walk.down = function (request, dir) {
+    function download(resolve, reject) {
+        let filepath = path.join(dir, Date.now() + '.html');
+        let header = null;
+
+        request.on('error', (e) => {
+            console.log(`problem with request: ${e.message}`);
+            //虽然请求失败了, 但promise继续, 这条链不能断
+            console.log('error');
+            resolve(e);
+        });
+
+        request.on('response', (response) => {
+            if (response.statusCode < 299) {
+                //TODO@响应头中不一定有charset=gbk
+                let encode = 'utf8';
+                if (response.headers['content-type'].includes('gbk')) encode = 'gbk';
+
+                response.pipe(iconv.decodeStream(encode))
+                    .pipe(iconv.encodeStream('utf8'))
+                    .pipe(fs.createWriteStream(filepath));
+
+                header = response.headers;
+            } else {
+                console.log(response.statusCode);
+                response.resume();
+            }
+        });
+        //用close事件, finish事件完成时, 文件没保存好
+        request.on('close', () => {
+            console.log('close'+ Date.now());
+            resolve('good');
+        });
+        //永远不要忘记调用end()结束请求, 不然一直socket hang out
+        request.end();
+    }
+
+    return new Promise(download);
+}
+
+walk.downimg = function (request, dir) {
     let filepath = path.join(dir, Date.now() + '.jpg');
     request.on('error', (e) => {
         console.log(`problem with request: ${e.message}`);
