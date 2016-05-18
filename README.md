@@ -106,3 +106,6 @@ http://blog.sina.com.cn/s/blog_464f6dba01012vwv.html
 version 1.0.1
 * 修复parser.parse可能造成的内存泄漏
 * parser.parse现在返回promise
+
+version 1.1.0
+* walk.down现在返回promise
